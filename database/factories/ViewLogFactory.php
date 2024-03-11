@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use Carbon\Carbon;
-use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +19,6 @@ class ViewLogFactory extends Factory
         return [
             'circle_id' => $this->faker->numberBetween(1, 25),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-3 week', $endDate='now'),
-            'updated_at' => Carbon::now(),
         ];
     }
 }
