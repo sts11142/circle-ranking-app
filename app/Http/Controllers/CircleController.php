@@ -23,7 +23,7 @@ class CircleController extends Controller
             array_push($rankedCircles, Circle::getNameAndFreetextBy($circleId));
         }
 
-        return response()->view('circles.ranking', compact('rankedCircles'));
+        return response()->view('circles.ranking', compact('rankedCircles', 'circleIds'));
     }
 
     /**
@@ -55,7 +55,10 @@ class CircleController extends Controller
      */
     public function show(string $id): Response
     {
-        $circle = Circle::where('id', $id)->first();
+        $circle = Circle::find($id);
+
+        // 閲覧ログを記録する
+        ViewLog::create(['circle_id' => $id]);
 
         return response()->view('circles.show', compact('circle'));
     }
