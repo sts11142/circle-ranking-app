@@ -12,4 +12,8 @@ class Circle extends Model
     public function viewLogs() {
         return $this->hasMany('App\Models\ViewLog');  // circleは複数のlogを有する（のでメソッド名も複数形）
     }
+
+    public static function getNameAndFreetextBy($id) {
+        return Self::select('name', 'free_text')->where('id', $id)->first();  // なければnull
+    }
 }
