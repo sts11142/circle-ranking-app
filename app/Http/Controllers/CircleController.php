@@ -18,20 +18,23 @@ class CircleController extends Controller
         $circleIds = ViewLog::RankingOfCircleByLogCount($daysAgo, $circlesLimit);
 
         // 得られたランキングデータ（`circle_id`の配列）をもとに、サークル情報を整形する
-        $rankedCircleDataArr = [];  // サークルデータが格納される
+        $rankedCircles = [];  // サークルデータが格納される
         foreach ($circleIds as $circleId) {
-            array_push($rankedCircleDataArr, Circle::getNameAndFreetextBy($circleId));
+            array_push($rankedCircles, Circle::getNameAndFreetextBy($circleId));
         }
 
-        return response()->view('circles.ranking', compact('rankedCircleDataArr'));
+        return response()->view('circles.ranking', compact('rankedCircles'));
     }
 
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    // }
+    public function index(): Response
+    {
+        $circles = Circle::all();  // ModelオブジェクトのCollection
+
+        return response()->view('circles.index', compact('circles'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -50,9 +53,12 @@ class CircleController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(string $id)
-    // {
-    // }
+    public function show(string $id): Response
+    {
+        $circle = Circle::where('id', $id)->first();
+
+        return response()->view('circles.show', compact('circle'));
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -23,4 +23,6 @@ Route::prefix('circles')  // URLルート circles/ に対応
 ->name('circles.')  // ルートの名前に circles. のプレフィクスを設定
 ->group(function() {
     Route::get('/ranking', 'ranking')->name('ranking');  // URLパス circles/ranking に対して CircleController.ranking にルーティングする。このルートに circles.ranking の名前を指定する
+    Route::get('/', 'index')->name('index');  // サークル一覧
+    Route::get('/{id}', 'show')->name('show');  // サークル詳細
 });
