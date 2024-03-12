@@ -1,6 +1,10 @@
 <div>circles.show</div>
 
 <div>
+  @if ($circleRank["isRanked"])
+    <p>ランキング順位：{{$circleRank["rank"]}}位</p>
+  @endif
+
   <p class="">サークル名：{{$circle->name}}</p>
   <p class="">活動内容：{{$circle->activity_content}}</p>
   <p class="">メンバー数：{{$circle->member_count}} 人</p>

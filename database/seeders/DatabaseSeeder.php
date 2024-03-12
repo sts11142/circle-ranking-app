@@ -14,10 +14,5 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Circle::factory(50)->create();
         \App\Models\ViewLog::factory(1000)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
