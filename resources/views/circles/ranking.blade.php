@@ -1,6 +1,6 @@
 <div>circles.ranking</div>
 
-@foreach ($rankedCircleDataArr as $circle)
+@foreach ($rankedCircles as $circle)
     <div>{{ $circle->name }}</div>
     <div>{{ $circle->free_text }}</div>
     <div>-------</div>
@@ -9,6 +9,6 @@
 
 {{-- @php
   echo '<pre>';
-  var_dump($rankedCircleDataArr);
+  var_dump($rankedCircles);
   echo '<pre>';
 @endphp --}}
