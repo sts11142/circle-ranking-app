@@ -22,8 +22,9 @@ class CircleController extends Controller
 
         // 得られたランキングデータ（`circle_id`の配列）をもとに、サークル情報を整形する
         $rankedCircles = [];  // サークルデータが格納される
+        $circleModel = new Circle;
         foreach ($circleIds as $circleId) {
-            array_push($rankedCircles, Circle::getNameAndFreetextBy($circleId));
+            array_push($rankedCircles, $circleModel->getBasicCircleInfoBy($circleId));
         }
 
         return response()->view('circles.ranking', compact('rankedCircles', 'circleIds'));
