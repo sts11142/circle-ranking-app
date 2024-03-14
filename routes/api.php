@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CircleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// LaravelのAPIルートは、`/api`プレフィクスが自動的に適用される
+
+// `/api/circles/ranking`: カスタムアクションのルート定義（リソースコントローラーより前に）
+Route::get('/circles/ranking', [CircleController::class, 'ranking']);
+// `/api/circles/`
+Route::apiResource('circles', CircleController::class);
