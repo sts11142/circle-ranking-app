@@ -30,7 +30,8 @@ class ViewLog extends Model
         $dateSince = Carbon::now()->subDays($daysAgo);
 
         // キャッシュ時間は 5分 とする
-        $cacheSeconds = 1 * 60 * 5;  // 秒
+        // $cacheSeconds = 1 * 60 * 5;  // 秒
+        $cacheSeconds = 1 * 15 * 1;  // debug 秒
 
         $circleIds = Cache::remember('circle_ranking', $cacheSeconds, function () use ($dateSince, $circlesLimit) {
             return self::where('created_at', '>=', $dateSince)

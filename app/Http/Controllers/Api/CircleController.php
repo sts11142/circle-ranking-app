@@ -43,7 +43,7 @@ class CircleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
         try {
             $circleModel = new Circle;  // ModelオブジェクトのCollection
@@ -73,7 +73,7 @@ class CircleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
         try {
             $circle = Circle::find($id);
